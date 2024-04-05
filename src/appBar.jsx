@@ -1,50 +1,16 @@
-// import * as React from "react";
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
-// import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
-// import AutoCompleteSearchInput from "./autoComplete";
-// import MenuIcon from "@mui/icons-material/Menu";
-
-// export default function PrimarySearchAppBar() {
-//   return (
-//     <Box sx={{ flexGrow: 1, backgroundColor: "#FCDC2A" }}>
-//       <AppBar
-//         style={{
-//           backgroundColor: "#FCDC2A",
-//           padding: 8,
-//         }}
-//         position="static"
-//       >
-//         <div
-//           style={{
-//             backgroundColor: "#FCDC2A",
-//             height: 20,
-//             fontSize: 16,
-//             color: "black",
-//             fontWeight: "bolder",
-//           }}
-//         >
-//           Bus Arrival Time
-//         </div>
-//         <Toolbar>
-//           <AutoCompleteSearchInput />
-//         </Toolbar>
-//       </AppBar>
-//     </Box>
-//   );
-// }
-
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { sendLog } from "./utils";
+import { debounce } from "lodash";
+import ClearIcon from "@mui/icons-material/Clear";
+import InfoIcon from "@mui/icons-material/Info";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -94,15 +60,36 @@ export default function SearchAppBar() {
       >
         <div
           style={{
-            backgroundColor: "#FCDC2A",
-            height: 40,
-            fontSize: 16,
-            color: "black",
-            fontWeight: "bolder",
-            alignContent: "center",
+            flexDirection: "row",
+            display: "flex",
+            flex: 1,
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginLeft: 10,
+            marginRight: 10,
           }}
         >
-          Bus Arrival Time
+          <IconButton
+            onClick={debounce(async () => {
+              await sendLog({ target_type: "x_button" });
+            }, 500)}
+          >
+            <ClearIcon style={{ color: "black", height: 30, width: 30 }} />
+          </IconButton>
+
+          <div
+            style={{
+              backgroundColor: "#FCDC2A",
+              height: 40,
+              fontSize: 16,
+              color: "black",
+              fontWeight: "bolder",
+              alignContent: "center",
+            }}
+          >
+            Bus Arrival Time
+          </div>
+          <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
         </div>
         <Toolbar style={{ backgroundColor: "#FCDC2A", borderColor: "#FCDC2A" }}>
           <Search style={{ flex: 1, borderRadius: 8 }}>
