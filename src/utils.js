@@ -8,10 +8,13 @@ export function getUniqueId() {
 }
 
 export async function sendLog({ target_type }) {
+  const urlparams = new URLSearchParams(window.location.search);
   const data = {
     user_id: getUniqueId(),
     target_type,
     timestamp: Date.now(),
+    platform: window.navigator.userAgent,
+    abtest_group: urlparams.get("abtest") || "control",
   };
   try {
     // const res = await fetch(
