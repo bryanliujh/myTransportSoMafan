@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
 import { sendLog } from "./utils";
 import { debounce } from "lodash";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -52,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({ pageTitle }) {
+export default function SearchAppBar({ pageTitle, showHomeIcon }) {
   const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -91,16 +92,29 @@ export default function SearchAppBar({ pageTitle }) {
           >
             {pageTitle}
           </div>
-          <IconButton
-            onClick={() =>
-              navigate({
-                pathname: "/search-arrival",
-                search: window.location.search,
-              })
-            }
-          >
-            <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
-          </IconButton>
+          {!showHomeIcon ? (
+            <IconButton
+              onClick={() =>
+                navigate({
+                  pathname: "/search-arrival",
+                  search: window.location.search,
+                })
+              }
+            >
+              <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
+            </IconButton>
+          ) : (
+            <IconButton
+              onClick={() =>
+                navigate({
+                  pathname: "/",
+                  search: window.location.search,
+                })
+              }
+            >
+              <HomeIcon style={{ color: "black", height: 30, width: 30 }} />
+            </IconButton>
+          )}
         </div>
         <Toolbar style={{ backgroundColor: "#FCDC2A", borderColor: "#FCDC2A" }}>
           <Search style={{ flex: 1, borderRadius: 8 }}>

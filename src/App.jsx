@@ -1,6 +1,6 @@
 import "./App.css";
 import SearchBusArrivalPage from "./pages/SearchBusArrivalPage";
-import SearchBusStopPage from "./pages/SearchBusStopPages";
+import SearchBusServicePage from "./pages/SearchBusServicePage";
 import HomePage from "./pages/HomePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -14,8 +14,8 @@ const router = createBrowserRouter([
     element: <SearchBusArrivalPage />,
   },
   {
-    path: "/search-bus-stop",
-    element: <SearchBusStopPage />,
+    path: "/search-bus-service",
+    element: <SearchBusServicePage />,
   },
 ]);
 
