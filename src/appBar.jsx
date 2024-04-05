@@ -11,6 +11,7 @@ import { sendLog } from "./utils";
 import { debounce } from "lodash";
 import ClearIcon from "@mui/icons-material/Clear";
 import InfoIcon from "@mui/icons-material/Info";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,7 +52,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ pageTitle }) {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -87,9 +89,18 @@ export default function SearchAppBar() {
               alignContent: "center",
             }}
           >
-            Bus Arrival Time
+            {pageTitle}
           </div>
-          <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
+          <IconButton
+            onClick={() =>
+              navigate({
+                pathname: "/search-arrival",
+                search: window.location.search,
+              })
+            }
+          >
+            <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
+          </IconButton>
         </div>
         <Toolbar style={{ backgroundColor: "#FCDC2A", borderColor: "#FCDC2A" }}>
           <Search style={{ flex: 1, borderRadius: 8 }}>
