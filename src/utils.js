@@ -7,6 +7,36 @@ export function getUniqueId() {
   return machineId;
 }
 
+export function getABtest() {
+  const urlparams = new URLSearchParams(window.location.search);
+  const abtestGroup = urlparams.get("abtest") || "control";
+  switch (abtestGroup) {
+    case "abtest1": {
+      return {
+        expanded: false,
+        hamburger: true,
+      };
+    }
+    case "abtest2": {
+      return {
+        expanded: true,
+        hamburger: false,
+      };
+    }
+    case "abtest3": {
+      return {
+        expanded: false,
+        hamburger: false,
+      };
+    }
+    default:
+      return {
+        expanded: true,
+        hamburger: true,
+      };
+  }
+}
+
 export async function sendLog({ target_type }) {
   const urlparams = new URLSearchParams(window.location.search);
   const data = {
@@ -15,6 +45,7 @@ export async function sendLog({ target_type }) {
     timestamp: Date.now(),
     platform: window.navigator.userAgent,
     abtest_group: urlparams.get("abtest") || "control",
+    ...getABtest(),
   };
   try {
     // const res = await fetch(

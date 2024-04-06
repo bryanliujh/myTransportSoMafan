@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavigateButton from "../components/NavigateButton";
 import resultspagebg from "../assets/resultspage.png";
 

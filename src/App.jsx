@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BusTimeMapPage from "./pages/BusTimeMapPage";
 import ResultsPage from "./pages/ResultsPage";
+import MainMenuPage from "./pages/MainMenuPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/results-page",
     element: <ResultsPage />,
+  },
+  {
+    path: "/main-menu-page",
+    element: <MainMenuPage />,
   },
 ]);
 
