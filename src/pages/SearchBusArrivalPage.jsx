@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import AppBar from "../appBar";
 import halfmapBg from "../assets/halfmap.png";
 import resultsbusesbg from "../assets/resultbuses.png";
+import expandedResultBusesbg from "../assets/expanded_resultbus.jpeg";
 import NavigateButton from "../components/NavigateButton";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { getABtest } from "../utils";
 
 const SearchBusArrivalPage = () => {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [isHidden, setHidden] = useState(false);
   const [isResultHidden, setResultHidden] = useState(true);
+  const { expanded } = getABtest();
+
   const onKeyPress = (e) => {
     if (String(e.target.value).toLowerCase().includes("kent ridge")) {
       setResultHidden(false);
@@ -36,7 +40,7 @@ const SearchBusArrivalPage = () => {
         isResultHidden ? null : (
           <div>
             <img
-              src={resultsbusesbg}
+              src={expanded ? expandedResultBusesbg : resultsbusesbg}
               alt=""
               style={{
                 width: "100%",
@@ -48,11 +52,14 @@ const SearchBusArrivalPage = () => {
               style={{
                 position: "absolute",
                 width,
-                top: 190,
-                height: 80,
+                ...(expanded
+                  ? { top: height * 0.22, height: 60 }
+                  : { top: height * 0.27, height: 80 }),
               }}
               pathname={"/results-page"}
-            />
+            >
+              hih
+            </NavigateButton>
           </div>
         )
       ) : (

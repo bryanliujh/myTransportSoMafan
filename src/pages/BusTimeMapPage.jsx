@@ -3,12 +3,14 @@ import { BottomSheet } from "react-spring-bottom-sheet";
 import "react-spring-bottom-sheet/dist/style.css";
 import mapBackground from "../assets/googlemap.jpeg";
 import bottomSheetBg from "../assets/bottomsheet.png";
-import { Button } from "@mui/material";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import NavigateButton from "../components/NavigateButton";
+import expandedBottomSheet from "../assets/expanded_bottomsheet.jpeg";
+import { getABtest } from "../utils";
 
 const BusTimeMapPage = () => {
   const [open, setOpen] = useState(false);
+  const { expanded } = getABtest();
   const [sheetHeight, setSheetHeight] = useState(undefined);
   const { width, height } = useWindowDimensions();
   const onDismiss = () => {
@@ -59,12 +61,12 @@ const BusTimeMapPage = () => {
           <img
             style={{ width: "100%", height: "100%", position: "relative" }}
             alt=""
-            src={bottomSheetBg}
+            src={expanded ? expandedBottomSheet : bottomSheetBg}
           />
           <NavigateButton
             style={{
               position: "absolute",
-              top: 480,
+              top: expanded ? 400 : 480,
               right: 10,
               width,
               height: 80,
