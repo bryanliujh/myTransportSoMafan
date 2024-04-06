@@ -21,7 +21,7 @@ const NavigateButton = ({
           ? onClick
           : async () => {
               if (targetType) {
-                await sendLog({
+                sendLog({
                   target_type: targetType,
                   page_name: pageName,
                 });
