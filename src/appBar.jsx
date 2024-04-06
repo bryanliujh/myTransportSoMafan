@@ -13,6 +13,7 @@ import { debounce } from "lodash";
 import ClearIcon from "@mui/icons-material/Clear";
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
+import NavigateButton from "./components/NavigateButton";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,13 +54,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({ pageTitle, showHomeIcon }) {
+export default function SearchAppBar({
+  pageTitle,
+  showHomeIcon,
+  onFocus,
+  onKeyDown,
+  onKeyUp,
+}) {
   const navigate = useNavigate();
+  const themeColor = "#f5cb42";
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
-        style={{ backgroundColor: "#FCDC2A", borderColor: "#FCDC2A" }}
+        style={{ backgroundColor: themeColor, borderColor: themeColor }}
       >
         <div
           style={{
@@ -72,17 +80,12 @@ export default function SearchAppBar({ pageTitle, showHomeIcon }) {
             marginRight: 10,
           }}
         >
-          <IconButton
-            onClick={debounce(async () => {
-              await sendLog({ target_type: "x_button" });
-            }, 500)}
-          >
+          <NavigateButton pathname={"/"}>
             <ClearIcon style={{ color: "black", height: 30, width: 30 }} />
-          </IconButton>
-
+          </NavigateButton>
           <div
             style={{
-              backgroundColor: "#FCDC2A",
+              backgroundColor: themeColor,
               height: 40,
               fontSize: 16,
               color: "black",
@@ -93,14 +96,7 @@ export default function SearchAppBar({ pageTitle, showHomeIcon }) {
             {pageTitle}
           </div>
           {!showHomeIcon ? (
-            <IconButton
-              onClick={() =>
-                navigate({
-                  pathname: "/search-arrival",
-                  search: window.location.search,
-                })
-              }
-            >
+            <IconButton>
               <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
             </IconButton>
           ) : (
@@ -116,7 +112,9 @@ export default function SearchAppBar({ pageTitle, showHomeIcon }) {
             </IconButton>
           )}
         </div>
-        <Toolbar style={{ backgroundColor: "#FCDC2A", borderColor: "#FCDC2A" }}>
+        <Toolbar
+          style={{ backgroundColor: themeColor, borderColor: themeColor }}
+        >
           <Search style={{ flex: 1, borderRadius: 8 }}>
             <SearchIconWrapper>
               <SearchIcon style={{ color: "grey" }} />
@@ -124,6 +122,9 @@ export default function SearchAppBar({ pageTitle, showHomeIcon }) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onFocus={onFocus}
+              onKeyDown={onKeyDown}
+              onKeyUp={onKeyUp}
             />
           </Search>
         </Toolbar>
