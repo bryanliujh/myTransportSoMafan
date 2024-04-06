@@ -19,7 +19,7 @@ const NavigateButton = ({
       onClick={
         onClick
           ? onClick
-          : debounce(async () => {
+          : async () => {
               if (targetType) {
                 await sendLog({
                   target_type: targetType,
@@ -30,7 +30,7 @@ const NavigateButton = ({
                 pathname,
                 search: window.location.search,
               });
-            }, 500)
+            }
       }
     >
       {children}
