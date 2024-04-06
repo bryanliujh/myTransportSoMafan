@@ -8,6 +8,7 @@ import ResultsPage from "./pages/ResultsPage";
 import Menu from "./pages/Homepage_xf"
 import HamburgerMenu from "./pages/Hamburgermenu";
 import BusArrivalTime from "./pages/BusArrivalTime";
+import MainMenuPage from "./pages/MainMenuPage";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +16,12 @@ const router = createBrowserRouter([
     element: <Menu />,
   },
   {
-    path:"/hamburgerMenu",
-    element:<HamburgerMenu />
+    path: "/hamburgerMenu",
+    element: <HamburgerMenu />
   },
   {
-    path:"/busat",
-    element:<BusArrivalTime/>
+    path: "/busat",
+    element: <BusArrivalTime />
   },
   {
     path: "/search-arrival",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/results-page",
     element: <ResultsPage />,
+  },
+  {
+    path: "/main-menu-page",
+    element: <MainMenuPage />,
   },
 ]);
 

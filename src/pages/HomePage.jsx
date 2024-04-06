@@ -3,7 +3,9 @@ import homepagbg from "../assets/home.jpeg";
 import NavigateButton from "../components/NavigateButton";
 import Drawer from "@mui/material/Drawer";
 import menuDrawerBg from "../assets/menudrawer.jpeg";
+import homeMainMenu from "../assets/homeMainMenu.png";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { getABtest } from "../utils";
 
 const HomePage = () => {
   const [open, setOpen] = useState(false);
@@ -11,7 +13,8 @@ const HomePage = () => {
     setOpen(newOpen);
   };
   const { width, height } = useWindowDimensions();
-  return (
+  const { hamburger } = getABtest();
+  return hamburger ? (
     <div>
       <img style={{ width: "100%", height: "100%" }} src={homepagbg} alt="" />
       <NavigateButton
@@ -72,6 +75,44 @@ const HomePage = () => {
           pathname={"/search-arrival"}
         />
       </Drawer>
+    </div>
+  ) : (
+    <div style={{ position: "relative" }}>
+      <NavigateButton
+        style={{
+          position: "absolute",
+          top: height * 0.15,
+          left: width * 0.3,
+          width: 60,
+          height: 60,
+        }}
+        pathname={"/search-bus-service"}
+      />
+      <NavigateButton
+        style={{
+          position: "absolute",
+          top: height * 0.15,
+          left: width * 0.55,
+          width: 60,
+          height: 60,
+        }}
+        pathname={"/search-arrival"}
+      />
+      <NavigateButton
+        style={{
+          position: "absolute",
+          top: height * 0.15,
+          left: width * 0.8,
+          width: 60,
+          height: 60,
+        }}
+        pathname={"/main-menu-page"}
+      />
+      <img
+        style={{ width: "100%", height: "100%" }}
+        src={homeMainMenu}
+        alt=""
+      />
     </div>
   );
 };
