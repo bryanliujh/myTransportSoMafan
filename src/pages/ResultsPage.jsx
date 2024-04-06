@@ -3,6 +3,7 @@ import NavigateButton from "../components/NavigateButton";
 import resultspagebg from "../assets/resultspage.png";
 
 const ResultsPage = () => {
+  const pageName = "BusArrivalResultPage";
   return (
     <div>
       <NavigateButton
@@ -14,6 +15,8 @@ const ResultsPage = () => {
           height: 60,
         }}
         pathname={"/"}
+        pageName={pageName}
+        targetType={"x_button"}
       />
       <img
         style={{ width: "100%", height: "100%" }}

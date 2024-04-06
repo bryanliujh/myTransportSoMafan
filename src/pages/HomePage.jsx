@@ -14,6 +14,7 @@ const HomePage = () => {
   };
   const { width, height } = useWindowDimensions();
   const { hamburger } = getABtest();
+  const pageName = "HomePage";
   return hamburger ? (
     <div>
       <img style={{ width: "100%", height: "100%" }} src={homepagbg} alt="" />
@@ -27,6 +28,8 @@ const HomePage = () => {
         }}
         pathname={"/"}
         onClick={toggleDrawer(true)}
+        pageName={pageName}
+        targetType={"open_drawer"}
       />
 
       <Drawer
@@ -52,6 +55,8 @@ const HomePage = () => {
           }}
           pathname={"/"}
           onClick={toggleDrawer(false)}
+          pageName={pageName}
+          targetType={"close_drawer"}
         />
         {/* // bus service */}
         <NavigateButton
@@ -63,6 +68,8 @@ const HomePage = () => {
             height: 60,
           }}
           pathname={"/search-bus-service"}
+          pageName={pageName}
+          targetType={"bus_service_button"}
         />
         <NavigateButton
           style={{
@@ -73,6 +80,8 @@ const HomePage = () => {
             height: 60,
           }}
           pathname={"/search-arrival"}
+          pageName={pageName}
+          targetType={"bus_arrival_button"}
         />
       </Drawer>
     </div>
@@ -87,6 +96,8 @@ const HomePage = () => {
           height: 60,
         }}
         pathname={"/search-bus-service"}
+        pageName={pageName}
+        targetType={"bus_service_button"}
       />
       <NavigateButton
         style={{
@@ -97,6 +108,8 @@ const HomePage = () => {
           height: 60,
         }}
         pathname={"/search-arrival"}
+        pageName={pageName}
+        targetType={"bus_arrival_button"}
       />
       <NavigateButton
         style={{
@@ -107,6 +120,8 @@ const HomePage = () => {
           height: 60,
         }}
         pathname={"/main-menu-page"}
+        pageName={pageName}
+        targetType={"see_all_button"}
       />
       <img
         style={{ width: "100%", height: "100%" }}

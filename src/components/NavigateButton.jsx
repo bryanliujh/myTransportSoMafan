@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 import debounce from "lodash";
 import { sendLog } from "../utils";
 
-const NavigateButton = ({ children, targetType, pathname, style, onClick }) => {
+const NavigateButton = ({
+  children,
+  targetType,
+  pathname,
+  style,
+  onClick,
+  pageName,
+}) => {
   const navigate = useNavigate();
   return (
     <IconButton
@@ -12,17 +19,18 @@ const NavigateButton = ({ children, targetType, pathname, style, onClick }) => {
       onClick={
         onClick
           ? onClick
-          : async () => {
+          : debounce(async () => {
               if (targetType) {
-                debounce(async () => {
-                  await sendLog({ target_type: targetType });
-                }, 500);
+                await sendLog({
+                  target_type: targetType,
+                  page_name: pageName,
+                });
               }
               navigate({
                 pathname,
                 search: window.location.search,
               });
-            }
+            }, 500)
       }
     >
       {children}

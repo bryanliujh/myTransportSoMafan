@@ -9,6 +9,7 @@ import expandedBottomSheet from "../assets/expanded_bottomsheet.jpeg";
 import { getABtest } from "../utils";
 
 const BusTimeMapPage = () => {
+  const pageName = "BusTimeMapPage";
   const [open, setOpen] = useState(false);
   const { expanded } = getABtest();
   const [sheetHeight, setSheetHeight] = useState(undefined);
@@ -32,6 +33,8 @@ const BusTimeMapPage = () => {
           height: 50,
         }}
         pathname={"/search-bus-service"}
+        pageName={pageName}
+        targetType={"bus_service_button"}
       />
       <NavigateButton
         style={{
@@ -42,6 +45,8 @@ const BusTimeMapPage = () => {
           height: 50,
         }}
         pathname={"/"}
+        pageName={pageName}
+        targetType={"home_button"}
       />
       <img
         style={{ width: "100%", height: "100%" }}
@@ -72,6 +77,7 @@ const BusTimeMapPage = () => {
               height: 80,
             }}
             pathname={"/results-page"}
+            pageName={pageName}
           />
         </div>
       </BottomSheet>

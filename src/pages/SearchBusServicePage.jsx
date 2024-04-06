@@ -9,6 +9,8 @@ const SearchBusStopPage = () => {
   const { width } = useWindowDimensions();
   const [isHidden, setHidden] = useState(false);
   const [isResultHidden, setResultHidden] = useState(true);
+  const pageName = "SearchBusServicePage";
+
   const onKeyPress = (e) => {
     if (String(e.target.value).toLowerCase().includes("200")) {
       setResultHidden(false);
@@ -33,6 +35,7 @@ const SearchBusStopPage = () => {
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onFocus={() => setHidden(true)}
+        pageName={pageName}
       />
       {isHidden ? (
         isResultHidden ? null : (
@@ -54,6 +57,8 @@ const SearchBusStopPage = () => {
                 height: 80,
               }}
               pathname={"/bus-time-map"}
+              pageName={pageName}
+              targetType={"bus_service_result"}
             />
           </div>
         )

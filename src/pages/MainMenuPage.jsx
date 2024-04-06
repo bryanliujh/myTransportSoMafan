@@ -5,6 +5,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const MainMenuPage = () => {
   const { width, height } = useWindowDimensions();
+  const pageName = "MainMenuPage";
   return (
     <div>
       <NavigateButton
@@ -16,6 +17,8 @@ const MainMenuPage = () => {
           height: 60,
         }}
         pathname={"/"}
+        pageName={pageName}
+        targetType={"back_button"}
       />
       <NavigateButton
         style={{
@@ -26,6 +29,8 @@ const MainMenuPage = () => {
           height: 60,
         }}
         pathname={"/search-arrival"}
+        pageName={pageName}
+        targetType={"bus_arrival_button"}
       />
       <NavigateButton
         style={{
@@ -36,6 +41,8 @@ const MainMenuPage = () => {
           height: 60,
         }}
         pathname={"/search-bus-service"}
+        pageName={pageName}
+        targetType={"bus_service_button"}
       />
       <img style={{ width: "100%", height: "100%" }} src={mainMenuBg} alt="" />
     </div>

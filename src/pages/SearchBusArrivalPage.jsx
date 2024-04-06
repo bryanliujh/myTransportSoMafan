@@ -12,6 +12,7 @@ const SearchBusArrivalPage = () => {
   const [isHidden, setHidden] = useState(false);
   const [isResultHidden, setResultHidden] = useState(true);
   const { expanded } = getABtest();
+  const pageName = "SearchBusArrivalPage";
 
   const onKeyPress = (e) => {
     if (String(e.target.value).toLowerCase().includes("kent ridge")) {
@@ -35,6 +36,7 @@ const SearchBusArrivalPage = () => {
         onFocus={() => setHidden(true)}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
+        pageName={pageName}
       />
       {isHidden ? (
         isResultHidden ? null : (
@@ -57,6 +59,8 @@ const SearchBusArrivalPage = () => {
                   : { top: height * 0.27, height: 80 }),
               }}
               pathname={"/results-page"}
+              pageName={pageName}
+              targetType={"bus_arrival_result"}
             />
           </div>
         )

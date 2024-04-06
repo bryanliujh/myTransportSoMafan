@@ -5,14 +5,10 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
-import { sendLog } from "./utils";
-import { debounce } from "lodash";
 import ClearIcon from "@mui/icons-material/Clear";
 import InfoIcon from "@mui/icons-material/Info";
-import { useNavigate } from "react-router-dom";
 import NavigateButton from "./components/NavigateButton";
 
 const Search = styled("div")(({ theme }) => ({
@@ -55,13 +51,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar({
+  pageName,
   pageTitle,
   showHomeIcon,
   onFocus,
   onKeyDown,
   onKeyUp,
 }) {
-  const navigate = useNavigate();
   const themeColor = "#f5cb42";
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -80,7 +76,11 @@ export default function SearchAppBar({
             marginRight: 10,
           }}
         >
-          <NavigateButton pathname={"/"}>
+          <NavigateButton
+            pageName={pageName}
+            targetType={"x_button"}
+            pathname={"/"}
+          >
             <ClearIcon style={{ color: "black", height: 30, width: 30 }} />
           </NavigateButton>
           <div
@@ -100,16 +100,13 @@ export default function SearchAppBar({
               <InfoIcon style={{ color: "black", height: 30, width: 30 }} />
             </IconButton>
           ) : (
-            <IconButton
-              onClick={() =>
-                navigate({
-                  pathname: "/",
-                  search: window.location.search,
-                })
-              }
+            <NavigateButton
+              pageName={pageName}
+              targetType={"home_button"}
+              pathname={"/"}
             >
               <HomeIcon style={{ color: "black", height: 30, width: 30 }} />
-            </IconButton>
+            </NavigateButton>
           )}
         </div>
         <Toolbar

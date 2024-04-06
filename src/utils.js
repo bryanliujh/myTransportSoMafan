@@ -37,7 +37,7 @@ export function getABtest() {
   }
 }
 
-export async function sendLog({ target_type }) {
+export async function sendLog({ target_type, page_name }) {
   const urlparams = new URLSearchParams(window.location.search);
   const data = {
     user_id: getUniqueId(),
@@ -46,6 +46,7 @@ export async function sendLog({ target_type }) {
     platform: window.navigator.userAgent,
     abtest_group: urlparams.get("abtest") || "control",
     ...getABtest(),
+    page_name,
   };
   try {
     // const res = await fetch(
