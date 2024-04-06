@@ -49,7 +49,7 @@ const BusTimeMapPage = () => {
       <BottomSheet
         snapPoints={({ minHeight, maxHeight }) => [
           sheetHeight ?? height * 0.3,
-          height * 0.9,
+          height * 0.8,
         ]}
         onDismiss={onDismiss}
         open={open}
