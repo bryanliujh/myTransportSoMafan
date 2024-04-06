@@ -57,9 +57,7 @@ const SearchBusArrivalPage = () => {
                   : { top: height * 0.27, height: 80 }),
               }}
               pathname={"/results-page"}
-            >
-              hih
-            </NavigateButton>
+            />
           </div>
         )
       ) : (
