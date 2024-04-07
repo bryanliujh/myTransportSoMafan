@@ -17,27 +17,24 @@ const NavigateButton = ({
   return (
     <IconButton
       style={style}
-      onClick={
-        onClick
-          ? onClick
-          : async () => {
-              if (targetType) {
-                sendLog({
-                  target_type: targetType,
-                  page_name: pageName,
-                });
-              }
-              navigate(
-                {
-                  pathname,
-                  search: window.location.search,
-                },
-                {
-                  state: pageParam,
-                }
-              );
-            }
-      }
+      onClick={async () => {
+        onClick();
+        if (targetType) {
+          sendLog({
+            target_type: targetType,
+            page_name: pageName,
+          });
+        }
+        navigate(
+          {
+            pathname,
+            search: window.location.search,
+          },
+          {
+            state: pageParam,
+          }
+        );
+      }}
     >
       {children}
     </IconButton>

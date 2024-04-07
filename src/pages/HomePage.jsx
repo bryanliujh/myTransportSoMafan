@@ -29,7 +29,7 @@ const HomePage = () => {
         pathname={"/"}
         onClick={toggleDrawer(true)}
         pageName={pageName}
-        targetType={"open_drawer"}
+        targetType={"hamburger_button"}
       />
 
       <Drawer
@@ -121,7 +121,7 @@ const HomePage = () => {
         }}
         pathname={"/main-menu-page"}
         pageName={pageName}
-        targetType={"see_all_button"}
+        targetType={"see_all_menu_button"}
       />
       <img
         style={{ width: "100%", height: "100%" }}
