@@ -6,7 +6,7 @@ import bottomSheetBg from "../assets/bottomsheet.png";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import NavigateButton from "../components/NavigateButton";
 import expandedBottomSheet from "../assets/expanded_bottomsheet.jpeg";
-import resultspagebg from "../assets/resultspage.png";
+import resultspagebg from "../assets/resultbus_service.jpg";
 import { DataAmount, getABtest } from "../utils";
 
 const BusTimeMapPage = () => {
@@ -76,10 +76,10 @@ const BusTimeMapPage = () => {
           <NavigateButton
             style={{
               position: "absolute",
-              top: expanded ? 400 : 480,
+              top: expanded ? height * 0.58 : height * 0.72,
               right: 10,
               width,
-              height: 80,
+              height: 90,
             }}
             pathname={"/results-page"}
             pageName={pageName}
