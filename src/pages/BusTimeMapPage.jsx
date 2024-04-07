@@ -76,10 +76,10 @@ const BusTimeMapPage = () => {
           <NavigateButton
             style={{
               position: "absolute",
-              top: expanded ? height * 0.58 : height * 0.72,
+              top: expanded ? 380 : 480,
               right: 10,
               width,
-              height: 90,
+              height: 120,
             }}
             pathname={"/results-page"}
             pageName={pageName}
