@@ -18,7 +18,7 @@ const NavigateButton = ({
     <IconButton
       style={style}
       onClick={async () => {
-        onClick();
+        onClick && onClick();
         if (targetType) {
           sendLog({
             target_type: targetType,
