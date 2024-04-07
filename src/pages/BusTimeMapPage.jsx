@@ -6,21 +6,27 @@ import bottomSheetBg from "../assets/bottomsheet.png";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import NavigateButton from "../components/NavigateButton";
 import expandedBottomSheet from "../assets/expanded_bottomsheet.jpeg";
-import { getABtest } from "../utils";
+import resultspagebg from "../assets/resultspage.png";
+import { DataAmount, getABtest } from "../utils";
 
 const BusTimeMapPage = () => {
   const pageName = "BusTimeMapPage";
   const [open, setOpen] = useState(false);
-  const { expanded } = getABtest();
-  const [sheetHeight, setSheetHeight] = useState(undefined);
+  const { expanded, dataAmount } = getABtest();
   const { width, height } = useWindowDimensions();
-  const onDismiss = () => {
-    setSheetHeight(100);
-  };
 
   useEffect(() => {
     setOpen(true);
   }, []);
+
+  const drawerMinHeight = () => {
+    if (dataAmount === DataAmount.Few) {
+      return height * 0.4;
+    } else if (dataAmount === DataAmount.Some) {
+      return height * 0.6;
+    }
+    return height * 0.8;
+  };
 
   return (
     <div>
@@ -55,10 +61,9 @@ const BusTimeMapPage = () => {
       />
       <BottomSheet
         snapPoints={({ minHeight, maxHeight }) => [
-          sheetHeight ?? height * 0.3,
+          drawerMinHeight(),
           height * 0.8,
         ]}
-        onDismiss={onDismiss}
         open={open}
         blocking={false}
       >
@@ -78,6 +83,9 @@ const BusTimeMapPage = () => {
             }}
             pathname={"/results-page"}
             pageName={pageName}
+            pageParam={{
+              backgroundImg: resultspagebg,
+            }}
           />
         </div>
       </BottomSheet>

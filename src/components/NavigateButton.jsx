@@ -11,6 +11,7 @@ const NavigateButton = ({
   style,
   onClick,
   pageName,
+  pageParam,
 }) => {
   const navigate = useNavigate();
   return (
@@ -26,10 +27,15 @@ const NavigateButton = ({
                   page_name: pageName,
                 });
               }
-              navigate({
-                pathname,
-                search: window.location.search,
-              });
+              navigate(
+                {
+                  pathname,
+                  search: window.location.search,
+                },
+                {
+                  state: pageParam,
+                }
+              );
             }
       }
     >
