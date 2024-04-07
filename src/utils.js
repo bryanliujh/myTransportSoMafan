@@ -112,7 +112,7 @@ export function getABtest() {
 
 export async function sendLog({ target_type, page_name }) {
   const urlparams = new URLSearchParams(window.location.search);
-  const { expanded, hamburger } = getABtest();
+  const { expanded, hamburger, dataAmount } = getABtest();
   const data = {
     user_id: getUniqueId(),
     target_type,
@@ -121,6 +121,7 @@ export async function sendLog({ target_type, page_name }) {
     abtest_group: urlparams.get("abtest") || "control",
     expanded: expanded ? "true" : "false",
     hamburger: hamburger ? "true" : "false",
+    data_amount: dataAmount,
     page_name,
   };
   try {
@@ -129,16 +130,16 @@ export async function sendLog({ target_type, page_name }) {
     // );
     // const data = await res.json();
     // console.log(data);
-    // await fetch(
-    //   "https://sheet.best/api/sheets/970aaaa0-1db6-45ae-9dad-893f60eaaedb",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   }
-    // );
+    await fetch(
+      "https://sheet.best/api/sheets/970aaaa0-1db6-45ae-9dad-893f60eaaedb",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
   } catch (error) {
     console.log(error);
   }
