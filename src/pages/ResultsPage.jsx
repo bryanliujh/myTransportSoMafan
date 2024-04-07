@@ -33,7 +33,7 @@ const ResultsPage = () => {
           width: 60,
           height: 60,
         }}
-        pathname={"/"}
+        pathname={state?.backgroundImg ? "/bus-time-map" : "/"}
         pageName={pageName}
         targetType={"x_button"}
       />
