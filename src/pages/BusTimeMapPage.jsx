@@ -86,6 +86,7 @@ const BusTimeMapPage = () => {
             pageParam={{
               backgroundImg: resultspagebg,
             }}
+            targetType={"bus_stop_bottom_drawer_button"}
           />
         </div>
       </BottomSheet>
