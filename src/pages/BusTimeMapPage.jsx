@@ -6,7 +6,7 @@ import bottomSheetBg from "../assets/bottomsheet.png";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import NavigateButton from "../components/NavigateButton";
 import expandedBottomSheet from "../assets/expanded_bottomsheet.jpeg";
-import resultspagebg from "../assets/resultbus_service.jpg";
+import resultspagebg from "../assets/resultbus_new_service.jpg";
 import { DataAmount, getABtest } from "../utils";
 
 const BusTimeMapPage = () => {
